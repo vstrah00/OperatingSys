@@ -183,10 +183,18 @@ int main(){
     sem_init(&s13, 0, 0);
 	pthread_mutex_init(&counterMutex, NULL);
 
-	pthread_create(&th[3], NULL, &thread3, &id[3]);
-	pthread_create(&th[2], NULL, &thread2, &id[2]);
-	pthread_create(&th[1], NULL, &thread1, &id[1]);
-	pthread_create(&th[0], NULL, &thread0, &id[0]);
+	if(pthread_create(&th[3], NULL, &thread3, &id[3])!=0){
+		printf("Error creating thread!\n");
+	}
+	if(pthread_create(&th[2], NULL, &thread2, &id[2])!=0){
+		printf("Error creating thread!\n");
+	}
+	if(pthread_create(&th[1], NULL, &thread1, &id[1])!=0){
+		printf("Error creating thread!\n");
+	}
+	if(pthread_create(&th[0], NULL, &thread0, &id[0])!=0){
+		printf("Error creating thread!\n");
+	}
 	
 	for(int i=0; i<NUM_OF_THREADS; i++){
 		pthread_join(th[i], NULL);
